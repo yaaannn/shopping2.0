@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0 ;
+    padding: 0;
 
 }
 
@@ -16,10 +16,8 @@ a {
 
 #top-menu {
     height: 40px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     background-color: #f2f2f2;
 }
 
@@ -85,57 +83,21 @@ a {
     color: red;
 }
 
+/*大盒子*/
 
-/*搜索框*/
-#search-div {
-    width: 700px;
-    height: 40px;
-    margin-top: 30px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-
-#search-box {
-    position: relative;
-    border: solid 2px red;
-    height: 40px;
-    width: 500px;
-    text-indent: 4px;
-}
-
-#search-btn {
-    position: relative;
-    right: 0px;
-    top: 3px;
-    height: 40px;
-    width: 100px;
-    font-style: initial;
-    font-size: 18px;
+.out {
+    width: 980px;
     border: 2px solid red;
-    color: white;
-    background-color: red;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-/*图片*/
-#top-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#top-img img {
-    width: 60%;
-}
-
-/*所有商品的大盒子*/
-#items-div {
-    display: flex;
-    flex-wrap: wrap;
-    width: 1000px;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
+.out div {
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    float: left;
 }
 
 
@@ -156,105 +118,32 @@ a {
 }
 
 /*商品图片*/
-.itemImg {
-    width: 210px;
-    height: 210px;
-    /*鼠标变小手*/
-    cursor: pointer;
+.item-pic {
+     width: 120px;
+     height: 90px;
+}
+
+.detail-pic{
+    width: 200px;
+    height: 160px;
+}
+
+.cart-pic
+{
+    border:0;
+    width:90px;
+    height:60px;
+}
+/*商品名称*/
+.item-name {
+    color: blue;
+    font-size: 10pt;
+
 }
 
 /*商品价格*/
 .price {
     color: red;
-    font-size: 24px;
-}
-
-.model {
-    color: red;
-}
-
-.merchant {
-    color: #999999;
-    text-decoration: underline;
-    text-align: center;
-    font-size: 18px;
-
-}
-
-.sales {
-    position: relative;
-    top: -7px;
-    /*border: 1px #999 solid;*/
-    height: 33px;
-    width: 210px;
-
-}
-
-.sales-fix {
-    color: #999;
-}
-
-.sales-count {
-    color: red;
-    line-height: 33px;
-}
-
-
-/*分页的大盒子*/
-.page-nav {
-    width: 750px;
-    height: 40px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/*分页中的表格*/
-.page-nav-table {
-
-
-}
-
-.page-nav-table td {
-    height: 40px;
-    border: #e5e5e5 1px solid;
-
-}
-
-
-/*分页表格中的里面的标签*/
-.page-nav-a {
-    position: relative;
-    padding-right: 15px;
-    padding-left: 15px;
-    height: 40px;
-    border: 0px;
-    top: 25%;
-    text-align: center;
-    text-decoration: none;
-    color: rgba(51, 51, 51, 0.52);
-}
-
-.page-nav-table td :hover {
-    color: #331015;
-}
-
-
-.pageInfo {
-    color: #888888;
-    font-size: 14px;
-}
-
-
-/*设置a标签不可用*/
-/*这里需要写在a标签父亲里面*/
-.not-enable {
-    pointer-events: none;
-}
-
-
-.bottom {
-    width: auto;
-    height: 100px;
-    background-color: #000000d4;
+    font-size: 16px;
 }
 
