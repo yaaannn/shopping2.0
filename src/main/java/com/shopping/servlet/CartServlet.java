@@ -28,22 +28,22 @@ public class CartServlet extends HttpServlet {
             if (action.equals("add")) { // 如果是添加商品进购物车
 
                 if (addToCart(request, response)) {
-                    request.getRequestDispatcher("/success.jsp").forward(request, response);
+                    request.getRequestDispatcher("pages/success.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("/failure.jsp").forward(request, response);
+                    request.getRequestDispatcher("pages/failure.jsp").forward(request, response);
                 }
             }
             if (action.equals("show")) {// 如果是显示购物车
 
-                request.getRequestDispatcher("/cart.jsp").forward(request, response);
+                request.getRequestDispatcher("pages/cart.jsp").forward(request, response);
             }
             if (action.equals("delete")) {// 如果是执行删除购物车中的商品
                 // deleteFromCart(request, response);
                 // request.getRequestDispatcher("/cart.jsp").forward(request, response);
                 if (deleteFromCart(request, response)) {
-                    request.getRequestDispatcher("/cart.jsp").forward(request, response);
+                    request.getRequestDispatcher("pages/cart.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher("/cart.jsp").forward(request, response);
+                    request.getRequestDispatcher("pages/cart.jsp").forward(request, response);
                 }
             }
             // else {

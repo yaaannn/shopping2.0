@@ -18,4 +18,5 @@ public class UserService {
         return userDao.Register(new User(username, password));
     }
 
+    public int getUserId(String username){return userDao.getUserId(username);}
 }

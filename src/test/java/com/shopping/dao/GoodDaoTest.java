@@ -11,4 +11,5 @@ class GoodDaoTest {
     @Test
     void getGoodById() {
     }
+
 }

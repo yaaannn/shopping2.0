@@ -26,6 +26,7 @@ public class DoRegServlet extends HttpServlet {
         int currentUserReg = userService.userReg(username, password);
         if (currentUserReg == 1) {
             out.println("<h1>注册成功</h1>");
+            out.println("<a href='/pages/login.html'>返回登录</a>");
         }
     }
 

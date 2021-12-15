@@ -23,6 +23,18 @@ public class UserDao {
         }
         return user;
     }
+public int getUserId(String username){
+        String sql = "select id from user where username = ?";
+        ResultSet rs = DbUtil.execQuery(sql,new String[]{username});
+        try {
+            if (rs.next()){
+               return rs.getInt("id");
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+}
 
     public int Register(User user) {
         String sql = "insert into user values(null,?,?)";

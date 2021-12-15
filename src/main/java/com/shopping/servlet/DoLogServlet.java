@@ -33,7 +33,7 @@ public class DoLogServlet extends HttpServlet {
         if (!captcha2.equals(captcha1)) {
             out.println("<h1>验证码错误</h1>");
             // response.sendRedirect("login.jsp");index.jsp为登录页面
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            request.getRequestDispatcher("pages/login.jsp").include(request, response);
             return;
         } else {
             if (currentUserLog.getUsername().equals(username) &&
@@ -45,7 +45,7 @@ public class DoLogServlet extends HttpServlet {
             } else {
                 out.println("<h1>用户名或密码错误</h1>");
                 // response.sendRedirect("login.jsp");index.jsp为登录页面
-                request.getRequestDispatcher("login.jsp").include(request, response);
+                request.getRequestDispatcher("pages/login.html").include(request, response);
             }
         }
         out.close();

@@ -2,6 +2,7 @@ package com.shopping.servlet;
 
 import com.shopping.po.*;
 import com.shopping.service.OrderService;
+import com.shopping.service.UserService;
 import com.shopping.util.StringUtil;
 
 import javax.servlet.*;
@@ -12,7 +13,9 @@ import java.util.*;
 
 @WebServlet(name = "OrderServlet", value = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
+    UserService userService = new UserService();
     OrderService orderService = new OrderService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String operation  = request.getParameter("action");
@@ -30,49 +33,41 @@ public class OrderServlet extends HttpServlet {
         User user = (User)session.getAttribute("user");
         User user1 =new User();
         if(user == null){
-//            request.setAttribute("message", "请先登录，2秒后将自动跳转到登录页面！<meta http-equiv='Refresh' content='2;URL="+request.getContextPath()+"/client/login.jsp'>");
-//            request.getRequestDispatcher("/client/message.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/login.html").forward(request, response);
             return;
         }
-
-        String order_id = StringUtil.generateStr();//自动生成：订单号
-        //如果已登录，则从session中取出购物车中商品：Cart  Map<String,CartItem>  填充模型
-        Cart cart = (Cart) session.getAttribute("cart");//购物车
+        int userId = userService.getUserId(user.getUsername());
+        String order_id = StringUtil.generateStr();
+        Cart cart = (Cart) session.getAttribute("cart");
         HashMap<Good, Integer> goods = cart.getGoods();
-        Set<Good> good = goods.keySet();
-        Order order = new Order();//订单
-//        orders.setId(id);
-//        Integer number = (Integer) request.getAttribute("number");
+        Order order = new Order();
         order.setState("0");
         order.setNumber(null);
         order.setPrice(String.valueOf(cart.getTotalPrice()));
-//        orders.setState(0);
         order.setOrderId(order_id);
-        //购物项
-        user1.setId(user.getId()+1);
-        System.out.println(user1.getId());
-//        List<OrderItem> orderItem = new ArrayList<OrderItem>();
-
+        user1.setId(userId);
         orderService.addOrder(order,user1);
         session.removeAttribute("cart");//付款后，清空session中的购物车
-//        request.setAttribute("message", "付款成功，请等待店家发货！<span style='font-size: 18px;'><br/><br/>也可点击“我的订单”，查看您的订单信息</span>");//中间的付款步骤没写，这里只是模拟了购物的流程
-        request.getRequestDispatcher("/client/message.jsp").forward(request, response);
+        request.getRequestDispatcher("/CartServlet?action=show").forward(request, response);
     }
 
     private void showUserOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         if(user == null){
-            request.setAttribute("message", "请先登录，2秒后将自动跳转到登录页面！<meta http-equiv='Refresh' content='2;URL="+request.getContextPath()+"/client/login.jsp'>");
-            request.getRequestDispatcher("/client/message.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/login.html").forward(request, response);
             return;
         }
-        List<Order> orderList = orderService.findOrderByUserId(String.valueOf(user.getId()+1));//查询某个用户的所有订单
+        int userId = userService.getUserId(user.getUsername());
+//        request.setAttribute("userId",userId);
+        System.out.println(userId);
+        List<Order> orderList = orderService.findOrderByUserId(String.valueOf(userId));//查询某个用户的所有订单
+
         for (Order or: orderList) {
             System.out.println(or);
         }
         request.setAttribute("orderList", orderList);
-        request.getRequestDispatcher("order.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/order.jsp").forward(request, response);
     }
 
     @Override
