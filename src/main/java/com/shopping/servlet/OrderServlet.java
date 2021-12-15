@@ -39,7 +39,6 @@ public class OrderServlet extends HttpServlet {
         int userId = userService.getUserId(user.getUsername());
         String order_id = StringUtil.generateStr();
         Cart cart = (Cart) session.getAttribute("cart");
-        HashMap<Good, Integer> goods = cart.getGoods();
         Order order = new Order();
         order.setState("0");
         order.setNumber(null);

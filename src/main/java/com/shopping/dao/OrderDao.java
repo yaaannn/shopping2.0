@@ -1,7 +1,6 @@
 package com.shopping.dao;
 
 import com.shopping.po.Order;
-import com.shopping.po.OrderItem;
 import com.shopping.po.User;
 import com.shopping.util.DbUtil;
 
