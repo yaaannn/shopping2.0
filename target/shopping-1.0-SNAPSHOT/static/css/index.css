@@ -1,0 +1,144 @@
+@CHARSET "UTF-8";
+
+* {
+    margin: 0 ;
+    padding: 0;
+
+}
+
+a {
+    /*text-decoration: none;*/
+    /*color: #333;*/
+    /*pointer-events: none;*/
+    cursor: pointer;
+}
+
+
+#top-menu {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+
+#top-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+/*菜单里面的主要内容*/
+#in-menu {
+    position: relative;
+    height: 40px;
+    /*width: 400px;*/
+    right: 17%;
+}
+
+
+/*菜单中的a标签*/
+#in-menu a {
+    color: #888888; /**/
+    font-size: 14px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+#in-menu td {
+    padding: 0 10px;
+}
+
+#in-menu span {
+    color: #888888; /**/
+    font-size: 14px;
+    line-height: 40px;
+}
+
+#in-menu a:hover {
+    color: red;
+}
+
+
+#not-in-menu {
+    position: relative;
+    height: 40px;
+    width: 200px;
+    right: 17%;
+}
+
+/*菜单中的a标签*/
+#not-in-menu a {
+    color: #888888; /**/
+    font-size: 14px;
+    line-height: 40px;
+}
+
+#not-in-menu span {
+    color: #888888; /**/
+    font-size: 14px;
+    line-height: 40px;
+}
+
+#not-in-menu a:hover {
+    color: red;
+}
+
+/*大盒子*/
+
+.out {
+    width: 980px;
+    border: 2px solid red;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.out div {
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    float: left;
+}
+
+
+/*每一个放商品的盒子*/
+.item-div {
+    transition: 0.4s;
+    height: 337px;
+    width: 210px;
+    border: #999999 solid 1px;
+    padding: 0.2em 0.5em;
+    margin: 0.5em;
+    text-align: center;
+}
+
+
+.item-div:hover {
+    border: #ff0059 solid 1px;
+}
+
+/*商品图片*/
+.item-pic {
+     width: 120px;
+     height: 90px;
+}
+
+.detail-pic{
+    width: 200px;
+    height: 160px;
+}
+
+
+/*商品名称*/
+.item-name {
+    color: blue;
+    font-size: 10pt;
+
+}
+
+/*商品价格*/
+.price {
+    color: red;
+    font-size: 16px;
+}
+

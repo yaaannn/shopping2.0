@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDao {
-
+    // 添加订单
     public  void addOrder(Order order, User user) {
-//        Connection connection = DbUtil.getConn();
         String sql = "insert into `order` (id,user_id,state,order_id,number,price) values (null,?,?,?,?,?)";
         String[] args = new String[]{String.valueOf(user.getId()),order.getState(), order.getOrderId(), order.getNumber(), order.getPrice()};
         DbUtil.execUpdate(sql, args);

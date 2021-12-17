@@ -11,7 +11,7 @@ public class UserService {
     }
 
     public User userLog(String username, String password) {
-        return userDao.Login(new User(username, password));
+        return userDao.Login(username,password);
     }
 
     public int userReg(String username, String password) {

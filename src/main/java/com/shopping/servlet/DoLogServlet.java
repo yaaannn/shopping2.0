@@ -20,31 +20,25 @@ public class DoLogServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         request.setCharacterEncoding("utf-8");
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String captcha1 = request.getParameter("captcha");
         HttpSession session = request.getSession();
         String captcha2 = (String) session.getAttribute("captcha");
-
         UserService userService = new UserService();
         User currentUserLog = userService.userLog(username, password);
-
         if (!captcha2.equals(captcha1)) {
             out.println("<h1>验证码错误</h1>");
-            // response.sendRedirect("login.jsp");index.jsp为登录页面
             request.getRequestDispatcher("pages/login.jsp").include(request, response);
             return;
         } else {
             if (currentUserLog.getUsername().equals(username) &&
                     currentUserLog.getPassword().equals(password)) {
-                // response.sendRedirect("index.jsp");
                 out.println("欢迎");
                 session.setAttribute("user",currentUserLog);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 out.println("<h1>用户名或密码错误</h1>");
-                // response.sendRedirect("login.jsp");index.jsp为登录页面
                 request.getRequestDispatcher("pages/login.html").include(request, response);
             }
         }

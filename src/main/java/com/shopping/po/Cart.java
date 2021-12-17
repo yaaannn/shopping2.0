@@ -11,7 +11,7 @@ public class Cart {
     private double totalPrice;
 
     public Cart() {
-        goods = new HashMap<Good, Integer>();
+        goods = new HashMap<>();
         totalPrice = 0.0;
     }
 

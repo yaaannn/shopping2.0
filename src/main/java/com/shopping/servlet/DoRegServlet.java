@@ -14,20 +14,19 @@ import java.io.PrintWriter;
 public class DoRegServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         request.setCharacterEncoding("utf-8");
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
         UserService userService = new UserService();
         int currentUserReg = userService.userReg(username, password);
         if (currentUserReg == 1) {
             out.println("<h1>注册成功</h1>");
             out.println("<a href='/pages/login.html'>返回登录</a>");
         }
+        out.close();
     }
 
     @Override

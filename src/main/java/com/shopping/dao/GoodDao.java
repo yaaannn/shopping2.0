@@ -10,6 +10,7 @@ import java.util.List;
 
 public class GoodDao {
 
+    // 获取所有商品
     public List<Good> getAllGoods() {
         List<Good> goods = new ArrayList<>();
         String sql = "select * from good";
@@ -29,6 +30,7 @@ public class GoodDao {
         return goods;
     }
 
+    // 通过商品ID查找商品
     public Good getGoodById(int id) {
         String sql = "select * from good where id = ?";
         ResultSet rs = DbUtil.execQuery(sql, new String[] { String.valueOf(id) });
@@ -49,20 +51,19 @@ public class GoodDao {
         }
     }
 
+    // 最近浏览过的商品
     public List<Good> getViewList(String list) {
         List<Good> goodList = new ArrayList<>();
         int count = 5;
         if (list != null && list.length() > 0) {
             String[] arr = list.split(",");
-
             if (arr.length >= 5) {
                 for (int i = arr.length - 1; i >= arr.length - count; i--) {
                     goodList.add(getGoodById(Integer.parseInt(arr[i])));
                 }
             } else {
                 for (int i = arr.length - 1; i >= 0; i--) {
-                    goodList.add(getGoodById(Integer.valueOf(arr[i])));
-
+                    goodList.add(getGoodById(Integer.parseInt(arr[i])));
                 }
             }
             return goodList;

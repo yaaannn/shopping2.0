@@ -14,10 +14,8 @@ import java.io.IOException;
 
 @WebServlet(name = "CaptchaServlet", value = "/CaptchaServlet")
 public class CaptchaServlet extends HttpServlet {
-
     private static final int width = 60;
     private static final int height = 20;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("=======");

@@ -1,0 +1,74 @@
+/* LESS Document */
+* {
+    padding: 0px;
+    margin: 0px;
+    transition: all;
+    box-sizing: border-box;
+}
+
+
+
+.login-box {
+    width: 50%;
+    height: 400px;
+    margin: 0px auto;
+    border: 3px #5ba5fb solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-bg {
+    /* background: url(../images/login-div-bg.png); */
+    /* padding-top: 70px; */
+    margin: 50px auto;
+    width: 310px;
+    height: 348px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+
+.login-bg table {
+    margin: 0 auto;
+}
+
+.login-bg table td {
+    height: 50px;
+}
+
+.login-bg .login {
+    width: 270px;
+    height: 40px;
+    padding: 0px 10px 0px 40px;
+}
+
+
+.login-bg .yzm {
+    width: 150px;
+    height: 40px;
+    padding: 0px 10px 0px 40px;
+}
+
+.login-bg input[type=submit] {
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    background: #5ba5fb;
+    border: 1px #5ba5fb solid;
+    width: 270px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+}
+
+#footer {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    clear: both;
+    background: #5ba5fb;
+}

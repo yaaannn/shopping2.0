@@ -15,7 +15,6 @@ import java.util.*;
 public class OrderServlet extends HttpServlet {
     UserService userService = new UserService();
     OrderService orderService = new OrderService();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String operation  = request.getParameter("action");
@@ -26,9 +25,7 @@ public class OrderServlet extends HttpServlet {
             genOrder(request,response);
         }
     }
-
     private void genOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //判断用户是否登录：如果还没登录，则转向登录页面
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         User user1 =new User();
@@ -46,7 +43,7 @@ public class OrderServlet extends HttpServlet {
         order.setOrderId(order_id);
         user1.setId(userId);
         orderService.addOrder(order,user1);
-        session.removeAttribute("cart");//付款后，清空session中的购物车
+        session.removeAttribute("cart");
         request.getRequestDispatcher("/CartServlet?action=show").forward(request, response);
     }
 
@@ -58,13 +55,8 @@ public class OrderServlet extends HttpServlet {
             return;
         }
         int userId = userService.getUserId(user.getUsername());
-//        request.setAttribute("userId",userId);
         System.out.println(userId);
-        List<Order> orderList = orderService.findOrderByUserId(String.valueOf(userId));//查询某个用户的所有订单
-
-        for (Order or: orderList) {
-            System.out.println(or);
-        }
+        List<Order> orderList = orderService.findOrderByUserId(String.valueOf(userId));
         request.setAttribute("orderList", orderList);
         request.getRequestDispatcher("pages/order.jsp").forward(request, response);
     }
